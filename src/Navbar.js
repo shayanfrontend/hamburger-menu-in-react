@@ -9,6 +9,7 @@ margin: 20px 50px;
 z-index: 15;
 li {
     padding 18px 30px;
+    font-weight:bold ;
 }
 @media (max-width: 768px){
     margin: 0;

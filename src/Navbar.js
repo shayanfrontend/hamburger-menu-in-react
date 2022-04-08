@@ -10,12 +10,15 @@ z-index: 15;
 li {
     padding 18px 30px;
     font-weight:bold ;
+    cursor: pointer;
 }
 @media (max-width: 768px){
     margin: 0;
     flex-direction: column;
     background-color: #1565df;
     position: fixed;
+    transition: all .3s linear;
+    transform: ${props => props.open ? "translateX(0)"  : "translateX(100%)" };
     top:0;
     right:0;
     height: 100%;
@@ -25,9 +28,9 @@ li {
         color: #fff;
     }
 `
-const Navbar = () => {
+const Navbar = ({open}) => {
     return (
-        <Ul>
+        <Ul open={open}>
             <li>Home</li>
             <li>Docs</li>
             <li>Buy me a coffee</li>

@@ -19,21 +19,41 @@ cursor: pointer;
 div{
     width: 2rem;
     height: 0.25rem;
-    background-color:#fff;
-    border-radius: 10px
-
+    background-color: ${props => props.open ? "#fff" : "#1565df"};
+    border-radius: 10px;
+    transform-origin: 1px;
+    transition: all .3s linear;
+    &:nth-child(1){
+        transform: ${(props) => (props.open ? "rotate(45deg)" : "rotate(0)") }
+    }
+    &:nth-child(2){
+        transform: ${(props) => props.open ? "translateX(-100%)" : "translateX(0)" };
+        opacity: ${props => props.open ? 0 : 1}
+    }
+    &:nth-child(3){
+        transform: ${(props) => (props.open ? "rotate(-45deg)" : "rotate(0)") };
+    }
 }
 `;
 class Burger extends Component {
+    constructor(){
+        super();
+        this.state = {
+            open: false
+        }
+    }
+    clickHandler = () => {
+        this.setState({open: !this.state.open});
+    }
     render() {
         return (
             <>
-            <Div>
+            <Div open={this.state.open} onClick={this.clickHandler}>
                 <div></div>
                 <div></div>
                 <div></div>
             </Div>
-            <Navbar/>
+            <Navbar open={this.state.open} />
             </>
         );
     }
